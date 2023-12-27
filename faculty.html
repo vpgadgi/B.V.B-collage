@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    #left-side {
+      flex: 1;
+      background-color: #fff;
+    }
+
+    #right-side {
+      flex: 2;
+      padding: 20px;
+    }
+
+    .department-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      padding: 4px;
+      border: 1px solid #483f77;
+      cursor: pointer;
+    }
+
+    .department-container:hover {
+      text-decoration: solid;
+    }
+
+    .department-logo {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    #departments-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        display: flex;
+        flex-direction: row;
+        height: 1300px;
+      }
+
+      #left-side {
+        flex: 1;
+        background-color: #fff;
+        width: 10vh;
+        padding: 5px;
+        font-size: 7px;
+      }
+
+      #right-side {
+        flex: 2;
+        background-color: #fff;
+        font-size: 7px;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 20%;
+        object-fit: cover;
+      }
+    }
+  </style>
+  <title>Department and Faculty Information</title>
+</head>
+<body>
+
+  <div id="left-side">
+    <h2>Departments</h2>
+    <ul id="departments-list">
+      <li class="department-container" onclick="openDepartmentPage('department1')">
+        <img class="department-logo" src="department1-logo.png" alt="Department 1 Logo">
+        Department 1
+      </li>
+      <li class="department-container" onclick="openDepartmentPage('department2')">
+        <img class="department-logo" src="department2-logo.png" alt="Department 2 Logo">
+        Department 2
+      </li>
+      <li class="department-container" onclick="openDepartmentPage('department3')">
+        <img class="department-logo" src="department2-logo.png" alt="Department 3 Logo">
+        Department 3
+      </li>
+      <!-- Add more departments as needed -->
+    </ul>
+  </div>
+
+  <div id="right-side">
+    <h2>Department Information</h2>
+    <section id="department-info">
+      <!-- Information for selected department will be dynamically populated here -->
+    </section>
+  </div>
+
+  <script>
+    function openDepartmentPage(department) {
+      // Simulating dynamic data based on the selected department
+      var departmentInfo = getDepartmentInfo(department);
+
+      // Update the department info section with the new data
+      updateDepartmentInfo(departmentInfo);
+    }
+
+    function getDepartmentInfo(department) {
+      // Replace this with your logic to fetch department information based on the selected department
+      // For now, let's use static data for demonstration purposes
+
+      var departmentData = {
+        'department1': 'games.html',
+        'department2': '',
+        'department3': '',
+        // Add more departments as needed
+      };
+
+      return departmentData[department] || 'Department information not available.';
+    }
+
+    function updateDepartmentInfo(info) {
+      var departmentInfoSection = document.querySelector('#department-info');
+      departmentInfoSection.textContent = info;
+    }
+  </script>
+
+</body>
+</html>
